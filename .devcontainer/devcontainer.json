@@ -1,14 +1,14 @@
 {
   "name": "MySQL Query Environment",
   "image": "mcr.microsoft.com/devcontainers/python:3.11",
-  "features": {
-    "ghcr.io/devcontainers/features/mysql:1": {
-      "database": "mydatabase",
-      "user": "vscode",
-      "password": "password",
-      "version": "latest"
-    }
-  },
+    "features": {
+        "ghcr.io/devcontainers-extra/features/mysql-homebrew:1": {
+            "database": "mydatabase",
+            "user":     "vscode",
+            "password": "password",
+            "version":  "latest"
+        }
+    },
 
   "postCreateCommand": "until mysqladmin ping -h 127.0.0.1 -u vscode --password=password --silent; do sleep 1; done && mysql -h 127.0.0.1 -u vscode --password=password mydatabase < schema.sql && mysql -h 127.0.0.1 -u vscode --password=password mydatabase < seed.sql && chmod +x login_mysql.sh && echo 'MySQL schema and seed data applied. Login script ready.'",
 
