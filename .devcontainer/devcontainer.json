@@ -1,0 +1,25 @@
+{
+  "name": "MySQL Query Environment",
+  "image": "mcr.microsoft.com/devcontainers/python:3.11",
+  "features": {
+    "ghcr.io/devcontainers/features/mysql:1": {
+      "database": "mydatabase",
+      "user": "vscode",
+      "password": "password",
+      "version": "latest"
+    }
+  },
+
+  "postCreateCommand": "until mysqladmin ping -h 127.0.0.1 -u vscode --password=password --silent; do sleep 1; done && mysql -h 127.0.0.1 -u vscode --password=password mydatabase -e 'CREATE TABLE IF NOT EXISTS users (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255)); INSERT INTO users (name) VALUES (\"Alice\"), (\"Bob\");' && echo 'MySQL initialized.'",
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "cweijan.vscode-mysql-client2"
+      ]
+    }
+  },
+
+  "forwardPorts": [3306]
+} 
