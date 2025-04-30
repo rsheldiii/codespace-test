@@ -10,7 +10,7 @@
     }
   },
 
-  "postCreateCommand": "until mysqladmin ping -h 127.0.0.1 -u vscode --password=password --silent; do sleep 1; done && mysql -h 127.0.0.1 -u vscode --password=password mydatabase -e 'CREATE TABLE IF NOT EXISTS users (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255)); INSERT INTO users (name) VALUES (\"Alice\"), (\"Bob\");' && echo 'MySQL initialized.'",
+  "postCreateCommand": "until mysqladmin ping -h 127.0.0.1 -u vscode --password=password --silent; do sleep 1; done && mysql -h 127.0.0.1 -u vscode --password=password mydatabase < schema.sql && mysql -h 127.0.0.1 -u vscode --password=password mydatabase < seed.sql && chmod +x login_mysql.sh && echo 'MySQL schema and seed data applied. Login script ready.'",
 
   "customizations": {
     "vscode": {
