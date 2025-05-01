@@ -10,7 +10,7 @@
         }
     },
 
-  "postCreateCommand": "mysql.server start && until mysqladmin ping -h 127.0.0.1 -u vscode --password=password --silent; do sleep 1; done && mysql -h 127.0.0.1 -u vscode --password=password mydatabase < schema.sql && mysql -h 127.0.0.1 -u vscode --password=password mydatabase < seed.sql && chmod +x login_mysql.sh && echo 'MySQL schema and seed data applied. Login script ready.'",
+  "postCreateCommand": "mysql.server start && until mysqladmin ping -h 127.0.0.1 -u root --silent; do sleep 1; done && mysql -h 127.0.0.1 -u root mydatabase < schema.sql && mysql -h 127.0.0.1 -u root mydatabase < seed.sql && chmod +x login_mysql.sh && echo 'MySQL schema and seed data applied. Login script ready.'",
 
   "customizations": {
     "vscode": {

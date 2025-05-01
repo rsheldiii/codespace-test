@@ -11,6 +11,6 @@ echo "Connecting to MySQL database '$DATABASE' as user '$USER'..."
 
 # Execute the mysql client command
 # The -p flag is directly followed by the password (no space)
-mysql -h $HOST -u $USER -p$PASSWORD $DATABASE
+mysql -h $HOST -u root
 
 echo "Exited MySQL console." 
